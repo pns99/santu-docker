@@ -1,11 +1,19 @@
----
 - hosts: all
-  become: True
+#  become: true
+  vars:
+    create_containers: 1
+    default_container_name: santuapp
+    default_container_image: santu459/santuapp:2.0
+
   tasks:
-    - name: Start the container
+    - name: Pull default docker image
+      docker_image:
+        name: "{{ default_container_image }}"
+        source: pull
+    - name: Create container
       docker_container:
-        name: santuapp
-        image: "santu459/santuapp:2.0"
+        name: "{{ default_container_name }}{{ item }}"
+        image: "{{ default_container_image }}"
         state: started
-        published_ports:
-          - 0.0.0.0:8080:8080
+        ports: "8082:80"
+      with_sequence: count={{ create_containers }}
