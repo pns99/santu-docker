@@ -1,2 +1,2 @@
 [all]
-ansible_ssh_host=192.168.130.191  ansible_port=22 ansible_user=santu
+ansible_ssh_host=x01casnode03  ansible_port=22 ansible_user=santu
