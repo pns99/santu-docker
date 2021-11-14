@@ -24,7 +24,7 @@
         build:
            path: /opt/apps/tomcat/
            source: build
-           state: present
+        state: present
 
     - name: push container image
       docker_image:
