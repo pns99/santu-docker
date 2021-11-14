@@ -1,0 +1,27 @@
+- hosts: all
+#  become: true
+  vars:
+    create_containers: 1
+    default_container_name: santuapp
+    default_container_image: santuapp4.0
+
+  tasks:
+    - name: Install python pip
+      yum:
+        name: python-pip
+        state: present
+    - name: Install docker-py python module
+      pip:
+        name: docker-py
+        state: present
+    - name: Pull default docker image
+      docker_image:
+        name: "{{ default_container_image }}"
+        source: pull
+    - name: Create container
+      docker_container:
+        name: "{{ default_container_name }}{{ item }}"
+        image: "{{ default_container_image }}"
+        state: started
+        ports: "8082:8083"
+      with_sequence: count={{ create_containers }}
