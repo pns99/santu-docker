@@ -9,15 +9,12 @@
     - name: copy Dockerfile
       copy:
         src: /var/lib/jenkins/workspace/santu_project/arttifact-jfrog/Dockerfile
-		remote_src: true
-        dest: /opt/apps/tomcat/Dockerfile
-        owner: santu
-        group: santu
-        mode: '0755'
+		dest: /opt/apps/tomcat/Dockerfile
+		remote_src: yes
     - name: copy war file
       copy:
         src: /var/lib/jenkins/workspace/santu_project/arttifact-jfrog/target/dockeransible.war
-		remote_src: true
+		remote_src: yes
         dest: /opt/apps/tomcat/Dockerfile
         owner: santu
         group: santu
@@ -34,6 +31,3 @@
 		name: "{{ default_container_image }}"
 		repository: santu459/santuapp:2.0 
 		push: yes
-		
-        name: "{{ default_container_image }}"
-        source: pull
