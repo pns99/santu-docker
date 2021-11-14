@@ -12,10 +12,11 @@
         dest: /opt/apps/tomcat/Dockerfile
         
 
-    - name: Install docker-py python module
+    - name: Copy war file
       copy:
         src: /var/lib/jenkins/workspace/santu_project/arttifact-jfrog/target/*.war
         dest: /opt/apps/tomcat/
+        remote_src: yes
         
     - name: build container image
       docker_image:
