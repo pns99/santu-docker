@@ -16,7 +16,7 @@
       copy:
         src: /var/lib/jenkins/workspace/santu_project/arttifact-jfrog/target/*.war
         dest: /opt/apps/tomcat/
-        remote_src: yes
+        
         
     - name: build container image
       docker_image:
