@@ -21,7 +21,7 @@
     - name: Create container
       docker_container:
         name: "{{ default_container_name }}{{ item }}"
-        image: "{{ default_container_image }}"
+        image: santudev.jfrog.io/santuapp/santuapp4
         state: started
         ports: "8082:8083"
       with_sequence: count={{ create_containers }}
