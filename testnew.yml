@@ -14,7 +14,7 @@
 
     - name: Copy war file
       copy:
-        src: /var/lib/jenkins/workspace/santu_project/arttifact-jfrog/target/*.war
+        src: /var/lib/jenkins/workspace/santu_project/arttifact-jfrog/target/dockeransible.war
         dest: /opt/apps/tomcat/
         
         
