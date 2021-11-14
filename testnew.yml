@@ -22,7 +22,7 @@
       docker_image:
         name: "{{ default_container_image }}"
         build:
-           path: /opt/apps/tomcat/Dockerfile
+           path: /opt/apps/tomcat/
            source: build
            state: present
 
