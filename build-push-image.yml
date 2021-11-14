@@ -1,0 +1,39 @@
+- hosts: all
+#  become: true
+  vars:
+    create_containers: 1
+    default_container_name: santuapp
+    default_container_image: santu459/santuapp:2.0
+
+  tasks:
+    - name: copy Dockerfile
+      copy:
+        src: /var/lib/jenkins/workspace/santu_project/arttifact-jfrog/Dockerfile
+		remote_src: true
+        dest: /opt/apps/tomcat/Dockerfile
+        owner: santu
+        group: santu
+        mode: '0755'
+    - name: copy war file
+      copy:
+        src: /var/lib/jenkins/workspace/santu_project/arttifact-jfrog/target/dockeransible.war
+		remote_src: true
+        dest: /opt/apps/tomcat/Dockerfile
+        owner: santu
+        group: santu
+        mode: '0755'
+    - name: build container image
+      docker_image:
+        name: "{{ default_container_image }}"
+        build:
+          path: /opt/apps/tomcat/
+          source: build
+        state: present
+	- name: Push image to registry
+	  docker_image:
+		name: "{{ default_container_image }}"
+		repository: santu459/santuapp:2.0 
+		push: yes
+		
+        name: "{{ default_container_image }}"
+        source: pull
