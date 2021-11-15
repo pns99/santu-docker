@@ -28,5 +28,5 @@
     - name: push container image
       docker_image:
         name: "{{ default_container_image }}"
-        repository: santudev.jfrog.io/santuapp/santuapp4:1
+        repository: santudev.jfrog.io/santuapp/"{{default_container_image}}"
         push: yes
