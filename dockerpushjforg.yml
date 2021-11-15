@@ -3,7 +3,7 @@
   vars:
     create_containers: 1
     default_container_name: santuapp
-    default_container_image: santuapp4:0
+    default_container_image: santuapp4:1
 
   tasks:
     - name: copy Dockerfile
@@ -28,5 +28,5 @@
     - name: push container image
       docker_image:
         name: "{{ default_container_image }}"
-        repository: santudev.jfrog.io/santuapp/santuapp4:0
+        repository: santudev.jfrog.io/santuapp/santuapp4:1
         push: yes
