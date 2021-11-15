@@ -19,7 +19,7 @@
         
     - name: Log into private registry and force re-authorization
       community.docker.docker_login:
-        registry_url: santudev.jfrog.io/
+        registry_url: santudev.jfrog.io
         username: santujfrog
         password: Success@123
         reauthorize: yes
